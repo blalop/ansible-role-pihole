@@ -11,3 +11,8 @@ service:
 http:
   "http://localhost:{{ pihole_lighttpd_port }}":
     status: 200
+
+command:
+  healthcheck:
+    exec: "dig +norecurse +retry=0 @127.0.0.1 pi.hole || exit 1"
+    exit-status: 0

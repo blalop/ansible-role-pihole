@@ -1,13 +1,14 @@
 ---
 
 - name: Pi-hole | Check installation
-  command: pihole status
-  register: pihole_status_check
+  command: pihole version
+  register: pihole_version_check
   ignore_errors: true
+  changed_when: false
 
 - name: Pi-hole | Install
   include: install.yml
-  when: pihole_status_check is failed or pihole_force_reinstall
+  when: pihole_version_check is failed or pihole_force_reinstall
   tags:
     - pihole_install
 
