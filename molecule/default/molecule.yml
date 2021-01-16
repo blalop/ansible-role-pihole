@@ -24,7 +24,6 @@ platforms:
       - NET_ADMIN
       - SYS_NICE
     tmpfs:
-      - /tmp
       - /run
       - /run/lock
     volumes:

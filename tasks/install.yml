@@ -19,8 +19,8 @@
 - name: Pi-hole | Download install script
   get_url:
     url: https://raw.githubusercontent.com/pi-hole/pi-hole/master/automated%20install/basic-install.sh
-    dest: /usr/local/bin/pihole-install.sh
+    dest: /tmp/pihole-install.sh
     mode: 0755
 
 - name: Pi-hole | Run install script
-  command: /usr/local/bin/pihole-install.sh --unattended
+  command: /tmp/pihole-install.sh --unattended
