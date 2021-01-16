@@ -1,0 +1,5 @@
+---
+- name: Converge
+  hosts: pihole_group
+  roles:
+    - role: pihole_role

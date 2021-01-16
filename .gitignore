@@ -1,0 +1,12 @@
+__pycache__
+*.pyc
+
+.pytest_cache
+.molecule
+.cache
+
+*.iml
+.idea
+.project
+
+**/.vscode

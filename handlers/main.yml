@@ -1,0 +1,6 @@
+---
+
+- name: restart pihole_lighttpd
+  systemd:
+    name: lighttpd
+    state: restarted

@@ -1,0 +1,13 @@
+---
+
+service:
+  lighttpd:
+    enabled: true
+    running: true
+  pihole-FTL:
+    enabled: true
+    running: true
+
+http:
+  "http://localhost:{{ pihole_lighttpd_port }}":
+    status: 200
