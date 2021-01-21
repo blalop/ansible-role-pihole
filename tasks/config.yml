@@ -7,6 +7,14 @@
   notify: restart pihole_lighttpd
   when: pihole_web_server
 
+- name: Pi-hole | Check current password hash
+  command: grep -oP 'WEBPASSWORD=\K\w+' /etc/pihole/setupVars.conf
+  changed_when: false
+  ignore_errors: true
+  register: pihole_current_password_hash
+
 - name: Pi-hole | Set password
   command: "pihole -a -p {{ pihole_password }}"
-  when: pihole_password | length > 0
+  changed_when: true
+  when: pihole_password | length > 0 and
+        pihole_password | hash('sha256') | hash('sha256') != pihole_current_password_hash.stdout
