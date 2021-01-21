@@ -6,3 +6,7 @@
     dest: /etc/lighttpd/lighttpd.conf
   notify: restart pihole_lighttpd
   when: pihole_web_server
+
+- name: Pi-hole | Set password
+  command: "pihole -a -p {{ pihole_password }}"
+  when: pihole_password | length > 0

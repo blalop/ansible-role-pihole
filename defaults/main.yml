@@ -3,6 +3,10 @@
 pihole_required_packages:
   - procps
 
+pihole_password: pihole
+
+pihole_force_reinstall: false
+
 ## Lighttpd config
 pihole_lighttpd_port: 80
 
@@ -16,5 +20,3 @@ pihole_query_logging: true
 pihole_web_server: true
 pihole_web_interface: true
 pihole_lighttpd_enabled: true
-
-pihole_force_reinstall: false
