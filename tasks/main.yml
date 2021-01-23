@@ -5,6 +5,8 @@
   register: pihole_version_check
   ignore_errors: true
   changed_when: false
+  tags:
+    - pihole_install
 
 - name: Pi-hole | Install
   include: install.yml
