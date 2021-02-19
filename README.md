@@ -1,6 +1,7 @@
 # Pihole Ansible role
 
 [![Build Status](https://travis-ci.com/blalop/pihole_role.svg?branch=main)](https://travis-ci.com/blalop/pihole_role)
+[![Ansible Galaxy](https://img.shields.io/badge/galaxy-blalop.pihole_role-B62682.svg)](https://galaxy.ansible.com/blalop/pihole_role)
 
 This role installs pihole via installation script. Tested on Debian && Raspbian.
 
@@ -36,3 +37,9 @@ Test the role via molecule:
 pipenv sync
 pipenv run molecule test
 ```
+
+## Built with
+
+![Ansible](https://img.shields.io/badge/ansible-2.9.16-green.svg)
+![Molecule](https://img.shields.io/badge/molecule-3.2.2-green.svg)
+![Goss](https://img.shields.io/badge/goss-0.3.16-green.svg)
