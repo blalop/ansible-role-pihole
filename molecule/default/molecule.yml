@@ -17,8 +17,10 @@ platforms:
       - 67/udp
       - 80/tcp
       - 443/tcp
+      - 9617/tcp
     published_ports:
       - 0.0.0.0:8080:80/tcp
+      - 0.0.0.0:9617:9617/tcp
     capabilities:
       - SYS_ADMIN
       - NET_ADMIN

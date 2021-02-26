@@ -18,3 +18,17 @@
   include: config.yml
   tags:
     - pihole_configure
+
+- name: Pi-hole Exporter | Install
+  include: exporter_install.yml
+  when: pihole_exporter_install
+  tags:
+    - pihole_exporter
+    - pihole_exporter_install
+
+- name: Pi-hole Exporter | Service
+  include: exporter_service.yml
+  when: pihole_exporter_install
+  tags:
+    - pihole_exporter
+    - pihole_exporter_service

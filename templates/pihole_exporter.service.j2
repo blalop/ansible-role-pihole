@@ -1,0 +1,25 @@
+{{ ansible_managed | comment }}
+[Unit]
+Description=pihole_exporter
+Documentation={{ pihole_exporter_documentation_link }}
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+PrivateTmp={{ pihole_exporter_private_tmp }}
+User={{ pihole_exporter_user }}
+Group={{ pihole_exporter_group }}
+RuntimeDirectory=pihole_exporter
+LimitNOFILE={{ pihole_exporter_max_files }}
+
+
+ExecStart={{ pihole_exporter_exec_name }} {% for option in pihole_exporter_options %}-{{ option }} {% endfor %}
+
+StandardOutput={{ pihole_exporter_log_output }}
+StandardError={{ pihole_exporter_log_output }}
+ExecReload=/bin/kill -HUP $MAINPID
+KillSignal=SIGTERM
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

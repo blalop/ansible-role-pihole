@@ -1,0 +1,17 @@
+---
+
+- name: Pi-hole Exporter | Copy Daemon script
+  template:
+    src: pihole_exporter.service.j2
+    dest: /etc/systemd/system/pihole_exporter.service
+    mode: 0644
+    owner: root
+    group: root
+  notify: restart pihole_exporter
+
+- name: Pi-hole Exporter | Configuring service
+  systemd:
+    name: pihole_exporter
+    state: "{{ pihole_exporter_state }}"
+    enabled: "{{ pihole_exporter_enabled }}"
+    daemon_reload: yes
