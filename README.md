@@ -2,31 +2,22 @@
 
 [![Build Status](https://travis-ci.com/blalop/pihole_role.svg?branch=main)](https://travis-ci.com/blalop/pihole_role)
 
-This role installs pihole via installation script. Tested on Debian && Raspbian.
+This role installs [Pi-Hole](https://pi-hole.net/) via installation script and (optionally) [eko](https://github.com/eko)'s [Pi-hole Exporter](https://github.com/eko/pihole-exporter).
+
+Made with [Idealista's cookiecutter template](https://github.com/idealista/cookiecutter-ansible-role).
 
 ## Requirements
 
-No special requirements.
+No special requirements. Use it in your playbook like this:
 
-
-## Role vars
-
-| Variable                   | Default     | Additional comments                                                                                  |
-| :---                       | :---        | :---                                                                                                 |
-| `pihole_required_packages` | [procps]    |                                                                                                      |
-| `pihole_password`          | pihole      | Pihole web interface password                                                                        |
-| `pihole_force_reinstall`   | false       | Forces reinstallation                                                                                |
-| `pihole_lighttpd_port`     | 80          | Web interface port                                                                                   |
-| `pihole_interface`         | eth0        | [Pihole setup vars](https://discourse.pi-hole.net/t/what-is-setupvars-conf-and-how-do-i-use-it/3533) |
-| `pihole_ipv4_address`      | 0.0.0.0     | [Pihole setup vars](https://discourse.pi-hole.net/t/what-is-setupvars-conf-and-how-do-i-use-it/3533) |
-| `pihole_ipv6_address`      | 0:0:0:0:0:0 | [Pihole setup vars](https://discourse.pi-hole.net/t/what-is-setupvars-conf-and-how-do-i-use-it/3533) |
-| `pihole_dns_1`             | 8.8.8.8     | [Pihole setup vars](https://discourse.pi-hole.net/t/what-is-setupvars-conf-and-how-do-i-use-it/3533) |
-| `pihole_dns_2`             | 4.4.4.4     | [Pihole setup vars](https://discourse.pi-hole.net/t/what-is-setupvars-conf-and-how-do-i-use-it/3533) |
-| `pihole_query_logging`     | true        | [Pihole setup vars](https://discourse.pi-hole.net/t/what-is-setupvars-conf-and-how-do-i-use-it/3533) |
-| `pihole_web_server`        | true        | [Pihole setup vars](https://discourse.pi-hole.net/t/what-is-setupvars-conf-and-how-do-i-use-it/3533) |
-| `pihole_web_interface`     | true        | [Pihole setup vars](https://discourse.pi-hole.net/t/what-is-setupvars-conf-and-how-do-i-use-it/3533) |
-| `pihole_lighttpd_enabled`  | true        | [Pihole setup vars](https://discourse.pi-hole.net/t/what-is-setupvars-conf-and-how-do-i-use-it/3533) |
-
+```
+- name: Configure services
+  hosts: pi
+  tags: services
+  roles:
+    - role: pihole
+      tags: pihole
+```
 
 ## Testing
 
