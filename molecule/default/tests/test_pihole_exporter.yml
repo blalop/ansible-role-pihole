@@ -1,0 +1,24 @@
+---
+
+service:
+  pihole_exporter:
+    enabled: true
+    running: true
+
+http:
+  http://localhost:9617/metrics:
+    status: 200
+    body:
+      - pihole_status{hostname="127.0.0.1"} 1
+
+file:
+  /usr/bin/pihole_exporter:
+    exists: true
+    owner: root
+    group: root
+    filetype: symlink
+  /opt/pihole_exporter:
+    exists: true
+    owner: pihole_exporter
+    group: pihole_exporter
+    filetype: directory

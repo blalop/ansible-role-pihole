@@ -4,3 +4,8 @@
   systemd:
     name: lighttpd
     state: restarted
+
+- name: restart pihole_exporter
+  systemd:
+    name: pihole_exporter
+    state: restarted

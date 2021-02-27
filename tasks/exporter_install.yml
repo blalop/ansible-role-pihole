@@ -1,0 +1,46 @@
+---
+
+- name: Pi-hole Exporter | Ensure pihole_exporter group
+  group:
+    name: "{{ pihole_exporter_group }}"
+    system: yes
+    state: present
+
+- name: Pi-hole Exporter | Ensure pihole_exporter user
+  user:
+    name: "{{ pihole_exporter_user }}"
+    group: "{{ pihole_exporter_group }}"
+    system: yes
+    shell: /usr/sbin/nologin
+    createhome: no
+
+- name: Pi-hole Exporter | Ensure skeleton paths
+  file:
+    dest: "{{ item }}"
+    owner: "{{ pihole_exporter_user }}"
+    group: "{{ pihole_exporter_group }}"
+    state: directory
+  with_items:
+    - "{{ pihole_exporter_skeleton_paths }}"
+
+- name: Pi-hole Exporter | Check pihole_exporter version
+  command: pihole_exporter --help
+  register: pihole_exporter_check
+  changed_when: false
+  ignore_errors: true
+
+- name: Pi-hole Exporter | Download package
+  get_url:
+    url: "{{ pihole_exporter_url }}"
+    dest: "{{ pihole_exporter_bin_path }}/{{ pihole_exporter_exec_name }}-{{ pihole_exporter_version }}"
+    owner: "{{ pihole_exporter_user }}"
+    group: "{{ pihole_exporter_group }}"
+    mode: "0755"
+  when: pihole_exporter_force_reinstall or pihole_exporter_check is failed
+
+- name: Pi-hole Exporter | Create symbolic link
+  file:
+    src: "{{ pihole_exporter_bin_path }}/{{ pihole_exporter_exec_name }}-{{ pihole_exporter_version }}"
+    dest: /usr/bin/pihole_exporter
+    state: link
+  when: pihole_exporter_force_reinstall or pihole_exporter_check is failed
