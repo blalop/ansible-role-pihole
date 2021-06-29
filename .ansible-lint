@@ -4,5 +4,6 @@ exclude_paths:
 parseable: true
 skip_list:
   - '204'
+  - '208'
 use_default_rules: true
 verbosity: 1

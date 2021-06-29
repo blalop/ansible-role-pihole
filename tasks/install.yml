@@ -24,3 +24,4 @@
 
 - name: Pi-hole | Run install script
   command: /tmp/pihole-install.sh --unattended
+  changed_when: true

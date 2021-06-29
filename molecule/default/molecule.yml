@@ -5,6 +5,7 @@ driver:
   name: docker
 lint: |
   yamllint .
+  ansible-lint .
 platforms:
   - name: pihole
     groups:
