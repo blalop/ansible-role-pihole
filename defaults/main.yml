@@ -6,7 +6,7 @@ pihole_required_packages:
 
 pihole_force_reinstall: false
 
-pihole_password: pihole
+pihole_password: ""
 
 ## Lighttpd config
 pihole_lighttpd_port: 80

@@ -7,3 +7,4 @@ QUERY_LOGGING={{ pihole_query_logging | lower }}
 INSTALL_WEB_SERVER={{ pihole_web_server | lower }}
 INSTALL_WEB_INTERFACE={{ pihole_web_interface | lower }}
 LIGHTTPD_ENABLED={{ pihole_lighttpd_enabled | lower }}
+WEBPASSWORD={{ '' if pihole_password == '' else pihole_password | hash('sha256') | hash('sha256') }}
