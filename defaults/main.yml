@@ -3,7 +3,6 @@
 # Pi-hole
 pihole_required_packages:
   - procps
-  - expect
 
 pihole_force_reinstall: false
 
