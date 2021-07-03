@@ -53,8 +53,9 @@ pihole_exporter_private_tmp: yes
 pihole_exporter_documentation_link: https://github.com/eko/pihole-exporter
 pihole_exporter_max_files: 32768
 pihole_exporter_log_output: "{% if pihole_exporter_log_file is defined %} file:{{ pihole_exporter_log_file }} {% else %} journal{% endif %}"
+
 pihole_exporter_options:
   - "port {{ pihole_exporter_port }}"
   - "pihole_hostname {{ pihole_exporter_hostname }}"
-  - "pihole_password {{ pihole_password }}"
   - "pihole_port {{ pihole_lighttpd_port }}"
+  - "{% if pihole_password != '' %}pihole_password {{ pihole_password }}{% endif %}"

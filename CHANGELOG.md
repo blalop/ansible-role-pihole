@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
+## [1.0.1](https://github.com/blalop/pihole_role/tree/1.0.1) - 2021-07-03
+### Fixed
+* [#5](https://github.com/blalop/pihole_role/issues/5) When no password is provided, skip exporter parameter @blalop
+
 ## [1.0.0](https://github.com/blalop/pihole_role/tree/1.0.0) - 2021-06-30
 ### Added
 * [#3](https://github.com/blalop/pihole_role/issues/3) Allow no password @blalop

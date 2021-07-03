@@ -13,7 +13,7 @@ RuntimeDirectory=pihole_exporter
 LimitNOFILE={{ pihole_exporter_max_files }}
 
 
-ExecStart={{ pihole_exporter_exec_name }} {% for option in pihole_exporter_options %}-{{ option }} {% endfor %}
+ExecStart={{ pihole_exporter_exec_name }} {% for option in pihole_exporter_options %}{% if option != '' %}-{{ option }} {% endif %}{% endfor %}
 
 StandardOutput={{ pihole_exporter_log_output }}
 StandardError={{ pihole_exporter_log_output }}
