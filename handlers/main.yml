@@ -1,11 +1,11 @@
 ---
 
-- name: restart pihole_lighttpd
+- name: Restart pihole_lighttpd
   systemd:
     name: lighttpd
     state: restarted
 
-- name: restart pihole_exporter
+- name: Restart pihole_exporter
   systemd:
     name: pihole_exporter
     state: restarted

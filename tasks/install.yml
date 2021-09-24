@@ -1,27 +1,27 @@
 ---
 
-- name: Pi-hole | Install dependencies
+- name: Install dependencies
   apt:
     name: "{{ pihole_required_packages }}"
     state: present
     update-cache: yes
 
-- name: Pi-hole | Ensure config path
+- name: Ensure config path
   file:
     dest: /etc/pihole
     state: directory
 
-- name: Pi-hole | Copy setup vars
+- name: Copy setup vars
   template:
     src: setupVars.conf.j2
     dest: /etc/pihole/setupVars.conf
 
-- name: Pi-hole | Download install script
+- name: Download install script
   get_url:
     url: https://raw.githubusercontent.com/pi-hole/pi-hole/master/automated%20install/basic-install.sh
     dest: /tmp/pihole-install.sh
     mode: 0755
 
-- name: Pi-hole | Run install script
+- name: Run install script
   command: /tmp/pihole-install.sh --unattended
   changed_when: true

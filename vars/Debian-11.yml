@@ -1,0 +1,5 @@
+---
+
+__pihole_required_packages:
+  - procps
+  - lighttpd-mod-deflate

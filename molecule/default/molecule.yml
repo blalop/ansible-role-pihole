@@ -10,29 +10,16 @@ platforms:
   - name: pihole
     groups:
       - pihole_group
-    image: ${MOLECULE_DISTRO:-debian:buster-slim}
-    privileged: false
-    exposed_ports:
-      - 53/tcp
-      - 53/udp
-      - 67/udp
-      - 80/tcp
-      - 443/tcp
-      - 9617/tcp
-    published_ports:
-      - 0.0.0.0:8080:80/tcp
-      - 0.0.0.0:9617:9617/tcp
-    capabilities:
-      - SYS_ADMIN
-      - NET_ADMIN
-      - SYS_NICE
-    tmpfs:
-      - /run
-      - /run/lock
+    image: "geerlingguy/docker-${MOLECULE_DISTRO:-debian11}-ansible:latest"
+    pre_build_image: true
+    privileged: true
     volumes:
       - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
     command: '/lib/systemd/systemd'
     stop_signal: 'RTMIN+3'
+    dns_servers:
+      - 8.8.8.8
+
 provisioner:
   name: ansible
 verifier:

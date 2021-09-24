@@ -1,7 +1,7 @@
-# Pihole Ansible role
+Ansible role: Pi-hole
 
-[![Build Status](https://travis-ci.com/blalop/pihole_role.svg?branch=main)](https://travis-ci.com/blalop/pihole_role)
-[![Ansible Galaxy](https://img.shields.io/badge/galaxy-blalop.pihole_role-B62682.svg)](https://galaxy.ansible.com/blalop/pihole_role)
+[![CI](https://github.com/blalop/ansible-role-pihole/workflows/CI/badge.svg?event=push)](https://github.com/blalop/ansible-role-pihole/actions?query=workflow%3ACI)
+[![Ansible Galaxy](https://img.shields.io/badge/galaxy-blalop.pihole-B62682.svg)](https://galaxy.ansible.com/blalop/pihole)
 
 This role installs [Pi-Hole](https://pi-hole.net/) via installation script and (optionally) [eko](https://github.com/eko)'s [Pi-hole Exporter](https://github.com/eko/pihole-exporter).
 
@@ -12,12 +12,9 @@ Made with [Idealista's cookiecutter template](https://github.com/idealista/cooki
 No special requirements. Use it in your playbook like this:
 
 ```
-- name: Configure services
-  hosts: pi
-  tags: services
+- hosts: all
   roles:
-    - role: pihole
-      tags: pihole
+    - blalop.pihole
 ```
 
 ## Testing
@@ -25,12 +22,6 @@ No special requirements. Use it in your playbook like this:
 Test the role via molecule:
 
 ```
-pipenv sync
-pipenv run molecule test
+pip install molecule
+molecule test
 ```
-
-## Built with
-
-![Ansible](https://img.shields.io/badge/ansible-2.9.16-green.svg)
-![Molecule](https://img.shields.io/badge/molecule-3.2.2-green.svg)
-![Goss](https://img.shields.io/badge/goss-0.3.16-green.svg)

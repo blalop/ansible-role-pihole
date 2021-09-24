@@ -1,8 +1,8 @@
 ---
 
-- name: Pi-hole | Copy lighttpd config
+- name: Copy lighttpd config
   template:
     src: lighttpd.conf.j2
     dest: /etc/lighttpd/lighttpd.conf
-  notify: restart pihole_lighttpd
+  notify: Restart pihole_lighttpd
   when: pihole_web_server
