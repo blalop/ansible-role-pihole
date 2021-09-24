@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
 ## [Unreleased](https://github.com/blalop/ansible-role-pihole/tree/main)
+
+## [1.1.0](https://github.com/blalop/ansible-role-pihole/tree/1.1.0) - 2021-07-03
 * [#7](https://github.com/blalop/ansible-role-pihole/issues/7) Debian 11 support @blalop
 
 ## [1.0.1](https://github.com/blalop/ansible-role-pihole/tree/1.0.1) - 2021-07-03

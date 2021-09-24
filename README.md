@@ -1,4 +1,4 @@
-Ansible role: Pi-hole
+# Ansible role: Pi-hole
 
 [![CI](https://github.com/blalop/ansible-role-pihole/workflows/CI/badge.svg?event=push)](https://github.com/blalop/ansible-role-pihole/actions?query=workflow%3ACI)
 [![Ansible Galaxy](https://img.shields.io/badge/galaxy-blalop.pihole-B62682.svg)](https://galaxy.ansible.com/blalop/pihole)
