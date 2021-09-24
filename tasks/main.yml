@@ -1,6 +1,23 @@
 ---
 
-- name: Pi-hole | Check installation
+- name: Include distribution and version-specific vars
+  include_vars: "{{ item }}"
+  with_first_found:
+    - files:
+        - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
+      skip: true
+
+- name: Define pihole_required_packages
+  set_fact:
+    pihole_required_packages: "{{ __pihole_required_packages }}"
+  when: pihole_required_packages is not defined
+
+- name: Define pihole_exporter_arch
+  set_fact:
+    pihole_exporter_arch: "{{ __pihole_exporter_arch_map }}"
+  when: pihole_exporter_arch is not defined and pihole_exporter_install
+
+- name: Check installation
   command: pihole version
   register: pihole_version_check
   ignore_errors: true
@@ -8,27 +25,13 @@
   tags:
     - pihole_install
 
-- name: Pi-hole | Install
-  include: install.yml
+- include_tasks: install.yml
   when: pihole_version_check is failed or pihole_force_reinstall
-  tags:
-    - pihole_install
 
-- name: Pi-hole | Configure
-  include: config.yml
-  tags:
-    - pihole_configure
+- include_tasks: config.yml
 
-- name: Pi-hole Exporter | Install
-  include: exporter_install.yml
+- include_tasks: exporter_install.yml
   when: pihole_exporter_install
-  tags:
-    - pihole_exporter
-    - pihole_exporter_install
 
-- name: Pi-hole Exporter | Service
-  include: exporter_service.yml
+- include_tasks: exporter_service.yml
   when: pihole_exporter_install
-  tags:
-    - pihole_exporter
-    - pihole_exporter_service

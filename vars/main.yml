@@ -1,0 +1,9 @@
+---
+
+__pihole_exporter_arch: "{{ __pihole_exporter_arch_map[ansible_architecture] }}"
+
+__pihole_exporter_arch_map:
+  i386: '386'
+  x86_64: 'amd64'
+  armv7l: 'arm'
+  armv6l: 'arm'
